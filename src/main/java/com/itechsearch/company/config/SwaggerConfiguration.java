@@ -27,11 +27,11 @@ public class SwaggerConfiguration {
 
     private ApiInfo metadata() {
         ApiInfo apiInfo=new ApiInfo(
-                "Spring Boot REST API",
-                "Spring Boot REST API for Online Store",
+                "Spring Boot iTech Search REST API",
+                "Spring Boot iTech Search REST API for Online Store",
                 "1.0",
                 "Terms of service",
-                new Contact("John Thompson", "https://springframework.guru/about/", "john@springfrmework.guru"),
+                new Contact("iTech Search", "will update soon", "itechsearch@gmail.com"),
                 "Apache License Version 2.0",
                 "https://www.apache.org/licenses/LICENSE-2.0"        );
         return apiInfo;
