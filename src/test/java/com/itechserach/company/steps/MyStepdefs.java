@@ -9,7 +9,7 @@ public class MyStepdefs {
 
         @When("^we call rest service with companyId (\\d+)$")
         public void getrestService(Integer input) throws Throwable {
-            System.out.println("------------->Called when");
+            System.out.println("------------->Called when with input"+ input);
 
         }
 
