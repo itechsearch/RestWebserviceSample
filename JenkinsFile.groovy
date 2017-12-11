@@ -1,15 +1,25 @@
-node('java8'){
-    stage('Configure'){
-        env.PATH="${tool 'maven-3.5.2'}/bin:${env.PATH}"
+stage 'build'
+node {
+    git 'https://github.com/itechsearch/RestWebserviceSample' withEnv(["PATH+MAVEN=${tool 'm3'}/bin"]) {
+        bat "mvn -B –Dmaven.test.failure.ignore=true clean package"
     }
-    stage('Checkout'){
-        git "https://github.com/itechsearch/RestWebserviceSample"
+    stash excludes: 'target/', includes: '**', name: 'source'
+}
+stage 'test'
+parallel 'integration': {
+    node {
+        unstash 'source' withEnv(["PATH+MAVEN=${tool 'm3'}/bin"]) {
+            bat "mvn clean verify"
+        }
     }
-    stage('Build'){
-        bat 'mvn -B -V -U -e clean package'
+}, 'quality': {
+    node {
+        unstash 'source' withEnv(["PATH+MAVEN=${tool 'm3'}/bin"]) {
+            bat "mvn sonar:sonar"
+        }
     }
-    stage('Archive'){
-        junit allowEmptyResults: true, testResults:'**/target/**/TEST*.xml'
-
-    }
+}
+stage 'approve'
+timeout(time: 3, unit: 'DAYS') {
+    input message: 'Do you want to deploy?', submitter: 'ops'
 }
