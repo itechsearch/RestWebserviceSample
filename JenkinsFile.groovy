@@ -31,7 +31,7 @@ node {
 
          withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: 'pivotalcf',
                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-            sh '''
+            bat '''
                 curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar -zx
 
                 ./cf api https://api.run.pivotal.io
