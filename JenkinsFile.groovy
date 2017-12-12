@@ -33,10 +33,10 @@ node {
                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
             bat '''
                
-                ./cf api https://api.run.pivotal.io
-                ./cf auth $USERNAME $PASSWORD
-                ./cf target -o ITechsearch-demo -s development
-                ./cf push
+                cf api https://api.run.pivotal.io
+                cf auth $USERNAME $PASSWORD
+                cf target -o ITechsearch -s ITechSearch
+                cf push
                '''
         }
     }
