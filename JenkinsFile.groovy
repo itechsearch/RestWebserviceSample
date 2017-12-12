@@ -32,8 +32,7 @@ node {
          withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: 'pivotalcf',
                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
             bat '''
-                curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar -zx
-
+               
                 ./cf api https://api.run.pivotal.io
                 ./cf auth $USERNAME $PASSWORD
                 ./cf target -o ITechsearch-demo -s development
