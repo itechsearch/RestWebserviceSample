@@ -25,4 +25,12 @@ node {
         junit allowEmptyResults: true, testResults: '**/target/**/TEST*.xml'
     }
 
+    stage('Deploy') {
+        // Depends on the 'Credentials Binding Plugin'
+        // (https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Binding+Plugin)
+
+        pushToCloudFoundry cloudSpace: 'ITechSearch', credentialsId: 'pivotalcf', organization: 'ITechSearch', target: 'https://api.run.pivotal.io'
+
+
+    }
 }
