@@ -2,7 +2,7 @@ node {
     stage('Configure') {
         env.PATH = "${tool 'maven-3.5.2'}/bin;${env.PATH}"
         echo env.PATH
-        version = '1.0.' + env.BUILD_NUMBER
+        version = ''
         currentBuild.displayName = version
 
         properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')), disableConcurrentBuilds(), [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/itechsearch/RestWebserviceSample/'], pipelineTriggers([githubPush()])])

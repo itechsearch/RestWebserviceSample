@@ -2,7 +2,7 @@
 applications:
 - name: rest-itechsearch
   host: sping-boot-company-rest-service
-  path: target/CompanyDetails-1.0.31.jar
+  path: target/CompanyDetails.jar
   memory: 768M
   disk quota: 256M
   instances: 1
