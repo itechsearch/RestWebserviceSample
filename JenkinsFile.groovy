@@ -3,7 +3,7 @@ node {
         env.PATH = "${tool 'maven-3.5.2'}/bin;${env.PATH}"
         echo env.PATH
        // version = ''
-        currentBuild.displayName = version
+        //currentBuild.displayName = version
 
         properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')), disableConcurrentBuilds(), [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/itechsearch/RestWebserviceSample/'], pipelineTriggers([githubPush()])])
 
