@@ -2,7 +2,7 @@ node {
     stage('Configure') {
         env.PATH = "${tool 'maven-3.5.2'}/bin;${env.PATH}"
         echo env.PATH
-        version = ''
+       // version = ''
         currentBuild.displayName = version
 
         properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')), disableConcurrentBuilds(), [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/itechsearch/RestWebserviceSample/'], pipelineTriggers([githubPush()])])
@@ -13,9 +13,9 @@ node {
         git 'https://github.com/itechsearch/RestWebserviceSample'
     }
 
-    stage('Version') {
-        bat "mvn -B -V -U -e versions:set -DnewVersion=$version"
-    }
+  //  stage('Version') {
+    //    bat "mvn -B -V -U -e versions:set -DnewVersion=$version"
+    //}
 
     stage('Build') {
         bat 'mvn -B -V -U -e clean package'
